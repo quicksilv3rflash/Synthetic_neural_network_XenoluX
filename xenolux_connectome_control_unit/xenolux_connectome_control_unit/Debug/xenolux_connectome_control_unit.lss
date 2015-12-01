@@ -1,0 +1,619 @@
+
+xenolux_connectome_control_unit.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000226  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .comment      00000030  00000000  00000000  0000027a  2**0
+                  CONTENTS, READONLY
+  2 .debug_aranges 00000028  00000000  00000000  000002aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   0000037b  00000000  00000000  000002d2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 00000140  00000000  00000000  0000064d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   000001bf  00000000  00000000  0000078d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000034  00000000  00000000  0000094c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    000001fb  00000000  00000000  00000980  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    0000026a  00000000  00000000  00000b7b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000018  00000000  00000000  00000de5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 c3 00 	call	0x186	; 0x186 <main>
+  64:	0c 94 11 01 	jmp	0x222	; 0x222 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <splice>:
+	uint8_t muxstatus = 0x00;
+	uint8_t neuronaddress = 0x00;
+	uint8_t layeraddress = 0x00;
+	//yes I know [switch : case] statements exist but for some reason they weren't compiling right...
+	//set up layer address bits
+	if(layer == 0){
+  6c:	88 23       	and	r24, r24
+  6e:	31 f0       	breq	.+12     	; 0x7c <splice+0x10>
+		layeraddress = 0x02;
+	}
+	if(layer == 1){
+  70:	81 30       	cpi	r24, 0x01	; 1
+  72:	41 f0       	breq	.+16     	; 0x84 <splice+0x18>
+		layeraddress = 0x06;
+	}
+	if(layer == 2){
+  74:	82 30       	cpi	r24, 0x02	; 2
+  76:	51 f0       	breq	.+20     	; 0x8c <splice+0x20>
+*/
+int splice(uint8_t layer, uint8_t neuron, int8_t synapse, uint8_t spliceto){
+	uint8_t muxaddress = 0x00;
+	uint8_t muxstatus = 0x00;
+	uint8_t neuronaddress = 0x00;
+	uint8_t layeraddress = 0x00;
+  78:	90 e0       	ldi	r25, 0x00	; 0
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <splice+0x12>
+	//yes I know [switch : case] statements exist but for some reason they weren't compiling right...
+	//set up layer address bits
+	if(layer == 0){
+		layeraddress = 0x02;
+  7c:	92 e0       	ldi	r25, 0x02	; 2
+		layeraddress = 0x06;
+	}
+	if(layer == 2){
+		layeraddress = 0x01;
+	}
+	if(layer == 3){
+  7e:	83 30       	cpi	r24, 0x03	; 3
+  80:	49 f0       	breq	.+18     	; 0x94 <splice+0x28>
+  82:	01 c0       	rjmp	.+2      	; 0x86 <splice+0x1a>
+	//set up layer address bits
+	if(layer == 0){
+		layeraddress = 0x02;
+	}
+	if(layer == 1){
+		layeraddress = 0x06;
+  84:	96 e0       	ldi	r25, 0x06	; 6
+		layeraddress = 0x01;
+	}
+	if(layer == 3){
+		layeraddress = 0x05;
+	}
+	if(layer == 4){
+  86:	84 30       	cpi	r24, 0x04	; 4
+  88:	39 f0       	breq	.+14     	; 0x98 <splice+0x2c>
+  8a:	01 c0       	rjmp	.+2      	; 0x8e <splice+0x22>
+	}
+	if(layer == 1){
+		layeraddress = 0x06;
+	}
+	if(layer == 2){
+		layeraddress = 0x01;
+  8c:	91 e0       	ldi	r25, 0x01	; 1
+		layeraddress = 0x05;
+	}
+	if(layer == 4){
+		layeraddress = 0x03;
+	}
+	if(layer == 5){
+  8e:	85 30       	cpi	r24, 0x05	; 5
+  90:	29 f0       	breq	.+10     	; 0x9c <splice+0x30>
+  92:	05 c0       	rjmp	.+10     	; 0x9e <splice+0x32>
+	}
+	if(layer == 2){
+		layeraddress = 0x01;
+	}
+	if(layer == 3){
+		layeraddress = 0x05;
+  94:	95 e0       	ldi	r25, 0x05	; 5
+  96:	03 c0       	rjmp	.+6      	; 0x9e <splice+0x32>
+	}
+	if(layer == 4){
+		layeraddress = 0x03;
+  98:	93 e0       	ldi	r25, 0x03	; 3
+  9a:	01 c0       	rjmp	.+2      	; 0x9e <splice+0x32>
+	}
+	if(layer == 5){
+		layeraddress = 0x07;
+  9c:	97 e0       	ldi	r25, 0x07	; 7
+	}
+	//set up neuron address bits
+	if(neuron == 0){
+  9e:	66 23       	and	r22, r22
+  a0:	31 f0       	breq	.+12     	; 0xae <splice+0x42>
+		neuronaddress = 0x02;
+	}
+	if(neuron == 1){
+  a2:	61 30       	cpi	r22, 0x01	; 1
+  a4:	41 f0       	breq	.+16     	; 0xb6 <splice+0x4a>
+		neuronaddress = 0x06;
+	}
+	if(neuron == 2){
+  a6:	62 30       	cpi	r22, 0x02	; 2
+  a8:	51 f0       	breq	.+20     	; 0xbe <splice+0x52>
+spliceto (0 to 7); 0-5 are axons in from previous layer, 6 is null, 7 is stim line
+*/
+int splice(uint8_t layer, uint8_t neuron, int8_t synapse, uint8_t spliceto){
+	uint8_t muxaddress = 0x00;
+	uint8_t muxstatus = 0x00;
+	uint8_t neuronaddress = 0x00;
+  aa:	50 e0       	ldi	r21, 0x00	; 0
+  ac:	01 c0       	rjmp	.+2      	; 0xb0 <splice+0x44>
+	if(layer == 5){
+		layeraddress = 0x07;
+	}
+	//set up neuron address bits
+	if(neuron == 0){
+		neuronaddress = 0x02;
+  ae:	52 e0       	ldi	r21, 0x02	; 2
+		neuronaddress = 0x06;
+	}
+	if(neuron == 2){
+		neuronaddress = 0x01;
+	}
+	if(neuron == 3){
+  b0:	63 30       	cpi	r22, 0x03	; 3
+  b2:	49 f0       	breq	.+18     	; 0xc6 <splice+0x5a>
+  b4:	01 c0       	rjmp	.+2      	; 0xb8 <splice+0x4c>
+	//set up neuron address bits
+	if(neuron == 0){
+		neuronaddress = 0x02;
+	}
+	if(neuron == 1){
+		neuronaddress = 0x06;
+  b6:	56 e0       	ldi	r21, 0x06	; 6
+		neuronaddress = 0x01;
+	}
+	if(neuron == 3){
+		neuronaddress = 0x05;
+	}
+	if(neuron == 4){
+  b8:	64 30       	cpi	r22, 0x04	; 4
+  ba:	39 f0       	breq	.+14     	; 0xca <splice+0x5e>
+  bc:	01 c0       	rjmp	.+2      	; 0xc0 <splice+0x54>
+	}
+	if(neuron == 1){
+		neuronaddress = 0x06;
+	}
+	if(neuron == 2){
+		neuronaddress = 0x01;
+  be:	51 e0       	ldi	r21, 0x01	; 1
+		neuronaddress = 0x05;
+	}
+	if(neuron == 4){
+		neuronaddress = 0x03;
+	}
+	if(neuron == 5){
+  c0:	65 30       	cpi	r22, 0x05	; 5
+  c2:	29 f0       	breq	.+10     	; 0xce <splice+0x62>
+  c4:	05 c0       	rjmp	.+10     	; 0xd0 <splice+0x64>
+	}
+	if(neuron == 2){
+		neuronaddress = 0x01;
+	}
+	if(neuron == 3){
+		neuronaddress = 0x05;
+  c6:	55 e0       	ldi	r21, 0x05	; 5
+  c8:	03 c0       	rjmp	.+6      	; 0xd0 <splice+0x64>
+	}
+	if(neuron == 4){
+		neuronaddress = 0x03;
+  ca:	53 e0       	ldi	r21, 0x03	; 3
+  cc:	01 c0       	rjmp	.+2      	; 0xd0 <splice+0x64>
+	}
+	if(neuron == 5){
+		neuronaddress = 0x07;
+  ce:	57 e0       	ldi	r21, 0x07	; 7
+	}
+	//set up mux address bits
+	if(synapse == -6){
+  d0:	4a 3f       	cpi	r20, 0xFA	; 250
+  d2:	31 f0       	breq	.+12     	; 0xe0 <splice+0x74>
+		muxaddress = 0x03;
+	}
+	if(synapse == -3){
+  d4:	4d 3f       	cpi	r20, 0xFD	; 253
+  d6:	41 f0       	breq	.+16     	; 0xe8 <splice+0x7c>
+		muxaddress = 0x01;
+	}
+	if(synapse == -1){
+  d8:	4f 3f       	cpi	r20, 0xFF	; 255
+  da:	51 f0       	breq	.+20     	; 0xf0 <splice+0x84>
+	- is inhibitory, + is excitatory
+	1: 17%, 3: 50%, 6: 100%
+spliceto (0 to 7); 0-5 are axons in from previous layer, 6 is null, 7 is stim line
+*/
+int splice(uint8_t layer, uint8_t neuron, int8_t synapse, uint8_t spliceto){
+	uint8_t muxaddress = 0x00;
+  dc:	80 e0       	ldi	r24, 0x00	; 0
+  de:	01 c0       	rjmp	.+2      	; 0xe2 <splice+0x76>
+	if(neuron == 5){
+		neuronaddress = 0x07;
+	}
+	//set up mux address bits
+	if(synapse == -6){
+		muxaddress = 0x03;
+  e0:	83 e0       	ldi	r24, 0x03	; 3
+		muxaddress = 0x01;
+	}
+	if(synapse == -1){
+		muxaddress = 0x02;
+	}
+	if(synapse == 1){
+  e2:	41 30       	cpi	r20, 0x01	; 1
+  e4:	49 f0       	breq	.+18     	; 0xf8 <splice+0x8c>
+  e6:	01 c0       	rjmp	.+2      	; 0xea <splice+0x7e>
+	//set up mux address bits
+	if(synapse == -6){
+		muxaddress = 0x03;
+	}
+	if(synapse == -3){
+		muxaddress = 0x01;
+  e8:	81 e0       	ldi	r24, 0x01	; 1
+		muxaddress = 0x02;
+	}
+	if(synapse == 1){
+		muxaddress = 0x06;
+	}
+	if(synapse == 3){
+  ea:	43 30       	cpi	r20, 0x03	; 3
+  ec:	39 f0       	breq	.+14     	; 0xfc <splice+0x90>
+  ee:	01 c0       	rjmp	.+2      	; 0xf2 <splice+0x86>
+	}
+	if(synapse == -3){
+		muxaddress = 0x01;
+	}
+	if(synapse == -1){
+		muxaddress = 0x02;
+  f0:	82 e0       	ldi	r24, 0x02	; 2
+		muxaddress = 0x06;
+	}
+	if(synapse == 3){
+		muxaddress = 0x05;
+	}
+	if(synapse == 6){
+  f2:	46 30       	cpi	r20, 0x06	; 6
+  f4:	29 f0       	breq	.+10     	; 0x100 <splice+0x94>
+  f6:	05 c0       	rjmp	.+10     	; 0x102 <splice+0x96>
+	}
+	if(synapse == -1){
+		muxaddress = 0x02;
+	}
+	if(synapse == 1){
+		muxaddress = 0x06;
+  f8:	86 e0       	ldi	r24, 0x06	; 6
+  fa:	03 c0       	rjmp	.+6      	; 0x102 <splice+0x96>
+	}
+	if(synapse == 3){
+		muxaddress = 0x05;
+  fc:	85 e0       	ldi	r24, 0x05	; 5
+  fe:	01 c0       	rjmp	.+2      	; 0x102 <splice+0x96>
+	}
+	if(synapse == 6){
+		muxaddress = 0x07;
+ 100:	87 e0       	ldi	r24, 0x07	; 7
+	}
+	//set up mux status bits
+	if(spliceto == 0){
+ 102:	22 23       	and	r18, r18
+ 104:	31 f0       	breq	.+12     	; 0x112 <splice+0xa6>
+		muxstatus = 0x0D;
+	}
+	if(spliceto == 1){
+ 106:	21 30       	cpi	r18, 0x01	; 1
+ 108:	41 f0       	breq	.+16     	; 0x11a <splice+0xae>
+		muxstatus = 0x05;
+	}
+	if(spliceto == 2){
+ 10a:	22 30       	cpi	r18, 0x02	; 2
+ 10c:	51 f0       	breq	.+20     	; 0x122 <splice+0xb6>
+	1: 17%, 3: 50%, 6: 100%
+spliceto (0 to 7); 0-5 are axons in from previous layer, 6 is null, 7 is stim line
+*/
+int splice(uint8_t layer, uint8_t neuron, int8_t synapse, uint8_t spliceto){
+	uint8_t muxaddress = 0x00;
+	uint8_t muxstatus = 0x00;
+ 10e:	30 e0       	ldi	r19, 0x00	; 0
+ 110:	01 c0       	rjmp	.+2      	; 0x114 <splice+0xa8>
+	if(synapse == 6){
+		muxaddress = 0x07;
+	}
+	//set up mux status bits
+	if(spliceto == 0){
+		muxstatus = 0x0D;
+ 112:	3d e0       	ldi	r19, 0x0D	; 13
+		muxstatus = 0x05;
+	}
+	if(spliceto == 2){
+		muxstatus = 0x0F;
+	}
+	if(spliceto == 3){
+ 114:	23 30       	cpi	r18, 0x03	; 3
+ 116:	49 f0       	breq	.+18     	; 0x12a <splice+0xbe>
+ 118:	01 c0       	rjmp	.+2      	; 0x11c <splice+0xb0>
+	//set up mux status bits
+	if(spliceto == 0){
+		muxstatus = 0x0D;
+	}
+	if(spliceto == 1){
+		muxstatus = 0x05;
+ 11a:	35 e0       	ldi	r19, 0x05	; 5
+		muxstatus = 0x0F;
+	}
+	if(spliceto == 3){
+		muxstatus = 0x07;
+	}
+	if(spliceto == 4){
+ 11c:	24 30       	cpi	r18, 0x04	; 4
+ 11e:	49 f0       	breq	.+18     	; 0x132 <splice+0xc6>
+ 120:	01 c0       	rjmp	.+2      	; 0x124 <splice+0xb8>
+	}
+	if(spliceto == 1){
+		muxstatus = 0x05;
+	}
+	if(spliceto == 2){
+		muxstatus = 0x0F;
+ 122:	3f e0       	ldi	r19, 0x0F	; 15
+		muxstatus = 0x07;
+	}
+	if(spliceto == 4){
+		muxstatus = 0x0B;
+	}
+	if(spliceto == 5){
+ 124:	25 30       	cpi	r18, 0x05	; 5
+ 126:	49 f0       	breq	.+18     	; 0x13a <splice+0xce>
+ 128:	01 c0       	rjmp	.+2      	; 0x12c <splice+0xc0>
+	}
+	if(spliceto == 2){
+		muxstatus = 0x0F;
+	}
+	if(spliceto == 3){
+		muxstatus = 0x07;
+ 12a:	37 e0       	ldi	r19, 0x07	; 7
+		muxstatus = 0x0B;
+	}
+	if(spliceto == 5){
+		muxstatus = 0x03;
+	}
+	if(spliceto == 6){
+ 12c:	26 30       	cpi	r18, 0x06	; 6
+ 12e:	39 f0       	breq	.+14     	; 0x13e <splice+0xd2>
+ 130:	01 c0       	rjmp	.+2      	; 0x134 <splice+0xc8>
+	}
+	if(spliceto == 3){
+		muxstatus = 0x07;
+	}
+	if(spliceto == 4){
+		muxstatus = 0x0B;
+ 132:	3b e0       	ldi	r19, 0x0B	; 11
+		muxstatus = 0x03;
+	}
+	if(spliceto == 6){
+		muxstatus = 0x00;
+	}
+	if(spliceto == 7){
+ 134:	27 30       	cpi	r18, 0x07	; 7
+ 136:	29 f0       	breq	.+10     	; 0x142 <splice+0xd6>
+ 138:	05 c0       	rjmp	.+10     	; 0x144 <splice+0xd8>
+	}
+	if(spliceto == 4){
+		muxstatus = 0x0B;
+	}
+	if(spliceto == 5){
+		muxstatus = 0x03;
+ 13a:	33 e0       	ldi	r19, 0x03	; 3
+ 13c:	03 c0       	rjmp	.+6      	; 0x144 <splice+0xd8>
+	}
+	if(spliceto == 6){
+		muxstatus = 0x00;
+ 13e:	30 e0       	ldi	r19, 0x00	; 0
+ 140:	01 c0       	rjmp	.+2      	; 0x144 <splice+0xd8>
+	}
+	if(spliceto == 7){
+		muxstatus = 0x01;
+ 142:	31 e0       	ldi	r19, 0x01	; 1
+	}
+	
+		
+	PORTC = 0x00;	
+ 144:	15 ba       	out	0x15, r1	; 21
+	//PORTC0-PORTC2 are connected to mux_address_bit_0 - mux_address_bit_2
+	PORTC |= muxaddress;
+ 146:	25 b3       	in	r18, 0x15	; 21
+ 148:	82 2b       	or	r24, r18
+ 14a:	85 bb       	out	0x15, r24	; 21
+	//PORTC4-PORTC6 are connected to layer_address_bit_0 - layer_address_bit_2
+	PORTC |= (layeraddress << 4);
+ 14c:	25 b3       	in	r18, 0x15	; 21
+ 14e:	40 e1       	ldi	r20, 0x10	; 16
+ 150:	94 9f       	mul	r25, r20
+ 152:	c0 01       	movw	r24, r0
+ 154:	11 24       	eor	r1, r1
+ 156:	82 2b       	or	r24, r18
+ 158:	85 bb       	out	0x15, r24	; 21
+	//PORTB0-PORTB3 are connected to mux_status_bit0 - mux_status_bit_3
+	PORTB = muxstatus;
+ 15a:	38 bb       	out	0x18, r19	; 24
+	//PORTD0-PORTD2 are connected to neuron_address_bit_0 - neuron_address_bit_2
+	PORTD = neuronaddress;
+ 15c:	52 bb       	out	0x12, r21	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 15e:	89 ef       	ldi	r24, 0xF9	; 249
+ 160:	90 e0       	ldi	r25, 0x00	; 0
+ 162:	01 97       	sbiw	r24, 0x01	; 1
+ 164:	f1 f7       	brne	.-4      	; 0x162 <splice+0xf6>
+ 166:	00 c0       	rjmp	.+0      	; 0x168 <splice+0xfc>
+ 168:	00 00       	nop
+	
+	//wait and then flag mux_write_enable (PORTC3)
+	_delay_ms(1);
+	PORTC |= 0x08;
+ 16a:	ab 9a       	sbi	0x15, 3	; 21
+ 16c:	89 ef       	ldi	r24, 0xF9	; 249
+ 16e:	90 e0       	ldi	r25, 0x00	; 0
+ 170:	01 97       	sbiw	r24, 0x01	; 1
+ 172:	f1 f7       	brne	.-4      	; 0x170 <splice+0x104>
+ 174:	00 c0       	rjmp	.+0      	; 0x176 <splice+0x10a>
+ 176:	00 00       	nop
+	_delay_ms(1);
+	//clear mux_write_enable (PORTC3)
+	PORTC &= 0xF7;
+ 178:	ab 98       	cbi	0x15, 3	; 21
+	//then clear everything
+	PORTC = 0x00;
+ 17a:	15 ba       	out	0x15, r1	; 21
+	PORTB = 0x00;
+ 17c:	18 ba       	out	0x18, r1	; 24
+	PORTD = 0x00; 
+ 17e:	12 ba       	out	0x12, r1	; 18
+	
+	return 0;
+}
+ 180:	80 e0       	ldi	r24, 0x00	; 0
+ 182:	90 e0       	ldi	r25, 0x00	; 0
+ 184:	08 95       	ret
+
+00000186 <main>:
+
+
+
+int main(void){
+	//set used ports (B,C,D) to output
+	DDRB = ~0;
+ 186:	8f ef       	ldi	r24, 0xFF	; 255
+ 188:	87 bb       	out	0x17, r24	; 23
+	DDRC = ~0;
+ 18a:	84 bb       	out	0x14, r24	; 20
+	DDRD = ~0;
+ 18c:	81 bb       	out	0x11, r24	; 17
+	
+
+
+	PORTD = 0x00;
+ 18e:	12 ba       	out	0x12, r1	; 18
+//L5N3S3-L4N0 kills
+//L5N3S3-L4N2 kills
+//L5N3S3-L4N3 ok
+//L5N3S3-L4N4 ok
+//L5N3S3-L4N5 ok
+		splice(5,3,-6,0);
+ 190:	20 e0       	ldi	r18, 0x00	; 0
+ 192:	4a ef       	ldi	r20, 0xFA	; 250
+ 194:	63 e0       	ldi	r22, 0x03	; 3
+ 196:	85 e0       	ldi	r24, 0x05	; 5
+ 198:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(5,3,-3,6);
+ 19c:	26 e0       	ldi	r18, 0x06	; 6
+ 19e:	4d ef       	ldi	r20, 0xFD	; 253
+ 1a0:	63 e0       	ldi	r22, 0x03	; 3
+ 1a2:	85 e0       	ldi	r24, 0x05	; 5
+ 1a4:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(5,3,-1,6);
+ 1a8:	26 e0       	ldi	r18, 0x06	; 6
+ 1aa:	4f ef       	ldi	r20, 0xFF	; 255
+ 1ac:	63 e0       	ldi	r22, 0x03	; 3
+ 1ae:	85 e0       	ldi	r24, 0x05	; 5
+ 1b0:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(5,3,1,7);
+ 1b4:	27 e0       	ldi	r18, 0x07	; 7
+ 1b6:	41 e0       	ldi	r20, 0x01	; 1
+ 1b8:	63 e0       	ldi	r22, 0x03	; 3
+ 1ba:	85 e0       	ldi	r24, 0x05	; 5
+ 1bc:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(5,3,3,6);
+ 1c0:	26 e0       	ldi	r18, 0x06	; 6
+ 1c2:	43 e0       	ldi	r20, 0x03	; 3
+ 1c4:	63 e0       	ldi	r22, 0x03	; 3
+ 1c6:	85 e0       	ldi	r24, 0x05	; 5
+ 1c8:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(5,3,6,6);
+ 1cc:	26 e0       	ldi	r18, 0x06	; 6
+ 1ce:	46 e0       	ldi	r20, 0x06	; 6
+ 1d0:	63 e0       	ldi	r22, 0x03	; 3
+ 1d2:	85 e0       	ldi	r24, 0x05	; 5
+ 1d4:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		
+		splice(4,0,-6,6);
+ 1d8:	26 e0       	ldi	r18, 0x06	; 6
+ 1da:	4a ef       	ldi	r20, 0xFA	; 250
+ 1dc:	60 e0       	ldi	r22, 0x00	; 0
+ 1de:	84 e0       	ldi	r24, 0x04	; 4
+ 1e0:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(4,0,-3,6);
+ 1e4:	26 e0       	ldi	r18, 0x06	; 6
+ 1e6:	4d ef       	ldi	r20, 0xFD	; 253
+ 1e8:	60 e0       	ldi	r22, 0x00	; 0
+ 1ea:	84 e0       	ldi	r24, 0x04	; 4
+ 1ec:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(4,0,-1,6);
+ 1f0:	26 e0       	ldi	r18, 0x06	; 6
+ 1f2:	4f ef       	ldi	r20, 0xFF	; 255
+ 1f4:	60 e0       	ldi	r22, 0x00	; 0
+ 1f6:	84 e0       	ldi	r24, 0x04	; 4
+ 1f8:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(4,0,1,6);
+ 1fc:	26 e0       	ldi	r18, 0x06	; 6
+ 1fe:	41 e0       	ldi	r20, 0x01	; 1
+ 200:	60 e0       	ldi	r22, 0x00	; 0
+ 202:	84 e0       	ldi	r24, 0x04	; 4
+ 204:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(4,0,3,7);
+ 208:	27 e0       	ldi	r18, 0x07	; 7
+ 20a:	43 e0       	ldi	r20, 0x03	; 3
+ 20c:	60 e0       	ldi	r22, 0x00	; 0
+ 20e:	84 e0       	ldi	r24, 0x04	; 4
+ 210:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+		splice(4,0,6,6);
+ 214:	26 e0       	ldi	r18, 0x06	; 6
+ 216:	46 e0       	ldi	r20, 0x06	; 6
+ 218:	60 e0       	ldi	r22, 0x00	; 0
+ 21a:	84 e0       	ldi	r24, 0x04	; 4
+ 21c:	0e 94 36 00 	call	0x6c	; 0x6c <splice>
+ 220:	ff cf       	rjmp	.-2      	; 0x220 <main+0x9a>
+
+00000222 <_exit>:
+ 222:	f8 94       	cli
+
+00000224 <__stop_program>:
+ 224:	ff cf       	rjmp	.-2      	; 0x224 <__stop_program>

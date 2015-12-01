@@ -1,0 +1,154 @@
+Flow report for Xenolux
+Sat Nov 28 20:24:20 2015
+Quartus II 64-Bit Version 14.1.1 Build 190 01/19/2015 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Flow Summary                                                                    ;
++------------------------------------+--------------------------------------------+
+; Flow Status                        ; Successful - Sat Nov 28 20:24:20 2015      ;
+; Quartus II 64-Bit Version          ; 14.1.1 Build 190 01/19/2015 SJ Web Edition ;
+; Revision Name                      ; Xenolux                                    ;
+; Top-level Entity Name              ; xenolux_top_layer                          ;
+; Family                             ; Cyclone IV E                               ;
+; Device                             ; EP4CE6E22C8                                ;
+; Timing Models                      ; Final                                      ;
+; Total logic elements               ; 4,050                                      ;
+;     Total combinational functions  ; 4,050                                      ;
+;     Dedicated logic registers      ; 0                                          ;
+; Total registers                    ; 0                                          ;
+; Total pins                         ; 66                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 11/28/2015 20:23:00 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; Xenolux             ;
++-------------------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                  ;
++-------------------------------------------------+---------------------------------------+--------------------+-------------------+----------------+
+; Assignment Name                                 ; Value                                 ; Default Value      ; Entity Name       ; Section Id     ;
++-------------------------------------------------+---------------------------------------+--------------------+-------------------+----------------+
+; ALLOW_REGISTER_MERGING                          ; Off                                   ; On                 ; --                ; --             ;
+; ALLOW_REGISTER_RETIMING                         ; Off                                   ; On                 ; --                ; --             ;
+; ALLOW_SHIFT_REGISTER_MERGING_ACROSS_HIERARCHIES ; Off                                   ; Auto               ; --                ; --             ;
+; ALLOW_SYNCH_CTRL_USAGE                          ; Off                                   ; On                 ; --                ; --             ;
+; ALM_REGISTER_PACKING_EFFORT                     ; Low                                   ; Medium             ; --                ; --             ;
+; AUTO_DELAY_CHAINS                               ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_GLOBAL_CLOCK                               ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_GLOBAL_REGISTER_CONTROLS                   ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_MERGE_PLLS                                 ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_RAM_BLOCK_BALANCING                        ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_RAM_RECOGNITION                            ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_ROM_RECOGNITION                            ; Off                                   ; On                 ; --                ; --             ;
+; AUTO_SHIFT_REGISTER_RECOGNITION                 ; Off                                   ; Auto               ; --                ; --             ;
+; COMPILER_SIGNATURE_ID                           ; 29611207753683.144876738002952        ; --                 ; --                ; --             ;
+; DISABLE_REGISTER_MERGING_ACROSS_HIERARCHIES     ; On                                    ; Auto               ; --                ; --             ;
+; EDA_OUTPUT_DATA_FORMAT                          ; Vhdl                                  ; --                 ; --                ; eda_simulation ;
+; EDA_SIMULATION_TOOL                             ; ModelSim-Altera (VHDL)                ; <None>             ; --                ; --             ;
+; ENABLE_BENEFICIAL_SKEW_OPTIMIZATION             ; Off                                   ; On                 ; --                ; --             ;
+; FINAL_PLACEMENT_OPTIMIZATION                    ; Never                                 ; Automatically      ; --                ; --             ;
+; INFER_RAMS_FROM_RAW_LOGIC                       ; Off                                   ; On                 ; --                ; --             ;
+; IO_PLACEMENT_OPTIMIZATION                       ; Off                                   ; On                 ; --                ; --             ;
+; MAX_CORE_JUNCTION_TEMP                          ; 85                                    ; --                 ; --                ; --             ;
+; MIN_CORE_JUNCTION_TEMP                          ; 0                                     ; --                 ; --                ; --             ;
+; MUX_RESTRUCTURE                                 ; Off                                   ; Auto               ; --                ; --             ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE                     ; 1.2V                                  ; --                 ; --                ; --             ;
+; OPTIMIZE_FOR_METASTABILITY                      ; Off                                   ; On                 ; --                ; --             ;
+; OPTIMIZE_HOLD_TIMING                            ; Off                                   ; All Paths          ; --                ; --             ;
+; OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING      ; Off                                   ; Normal             ; --                ; --             ;
+; OPTIMIZE_MULTI_CORNER_TIMING                    ; Off                                   ; On                 ; --                ; --             ;
+; OPTIMIZE_POWER_DURING_FITTING                   ; Off                                   ; Normal compilation ; --                ; --             ;
+; OPTIMIZE_POWER_DURING_SYNTHESIS                 ; Off                                   ; Normal compilation ; --                ; --             ;
+; OPTIMIZE_TIMING                                 ; Off                                   ; Normal compilation ; --                ; --             ;
+; PARTITION_COLOR                                 ; 16764057                              ; --                 ; xenolux_top_layer ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL             ; PLACEMENT_AND_ROUTING                 ; --                 ; xenolux_top_layer ; Top            ;
+; PARTITION_NETLIST_TYPE                          ; SOURCE                                ; --                 ; xenolux_top_layer ; Top            ;
+; POWER_BOARD_THERMAL_MODEL                       ; None (CONSERVATIVE)                   ; --                 ; --                ; --             ;
+; POWER_PRESET_COOLING_SOLUTION                   ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --                 ; --                ; --             ;
+; PROJECT_OUTPUT_DIRECTORY                        ; output_files                          ; --                 ; --                ; --             ;
+; QII_AUTO_PACKED_REGISTERS                       ; Off                                   ; Auto               ; --                ; --             ;
+; REMOVE_DUPLICATE_REGISTERS                      ; Off                                   ; On                 ; --                ; --             ;
+; ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION    ; Off                                   ; Auto               ; --                ; --             ;
+; ROUTER_REGISTER_DUPLICATION                     ; Off                                   ; Auto               ; --                ; --             ;
+; STATE_MACHINE_PROCESSING                        ; User-Encoded                          ; Auto               ; --                ; --             ;
+; SYNTHESIS_EFFORT                                ; Fast                                  ; Auto               ; --                ; --             ;
+; SYNTH_CLOCK_MUX_PROTECTION                      ; Off                                   ; On                 ; --                ; --             ;
+; SYNTH_TIMING_DRIVEN_SYNTHESIS                   ; Off                                   ; On                 ; --                ; --             ;
+; TOP_LEVEL_ENTITY                                ; xenolux_top_layer                     ; Xenolux            ; --                ; --             ;
++-------------------------------------------------+---------------------------------------+--------------------+-------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:01:20     ; 1.0                     ; 635 MB              ; 00:01:29                           ;
+; Total                ; 00:01:20     ; --                      ; --                  ; 00:01:29                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; MOI              ; Windows 7 ; 6.2        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off Xenolux -c Xenolux
+
+
+

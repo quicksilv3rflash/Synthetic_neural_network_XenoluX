@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Recovery 'CHAOS_CLOCK'
+Slack : -32.798
+TNS   : -1155.648
+
+Type  : Slow 1200mV 85C Model Recovery 'AVRuC_alpha_PORTB2'
+Slack : -32.283
+TNS   : -1134.230
+
+Type  : Slow 1200mV 85C Model Recovery 'AVRuC_BETA_PORTC0'
+Slack : -30.273
+TNS   : -1046.789
+
+Type  : Slow 1200mV 85C Model Removal 'AVRuC_BETA_PORTC0'
+Slack : -19.296
+TNS   : -373.138
+
+Type  : Slow 1200mV 85C Model Removal 'CHAOS_CLOCK'
+Slack : -15.668
+TNS   : -225.197
+
+Type  : Slow 1200mV 85C Model Removal 'AVRuC_alpha_PORTB2'
+Slack : -12.236
+TNS   : -86.895
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'AVRuC_BETA_PORTC0'
+Slack : -5.736
+TNS   : -1220.007
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CHAOS_CLOCK'
+Slack : -4.550
+TNS   : -949.249
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'AVRuC_alpha_PORTB2'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 0C Model Recovery 'CHAOS_CLOCK'
+Slack : -30.893
+TNS   : -1095.199
+
+Type  : Slow 1200mV 0C Model Recovery 'AVRuC_alpha_PORTB2'
+Slack : -30.398
+TNS   : -1075.390
+
+Type  : Slow 1200mV 0C Model Recovery 'AVRuC_BETA_PORTC0'
+Slack : -28.461
+TNS   : -995.211
+
+Type  : Slow 1200mV 0C Model Removal 'AVRuC_BETA_PORTC0'
+Slack : -18.231
+TNS   : -343.434
+
+Type  : Slow 1200mV 0C Model Removal 'CHAOS_CLOCK'
+Slack : -14.705
+TNS   : -207.595
+
+Type  : Slow 1200mV 0C Model Removal 'AVRuC_alpha_PORTB2'
+Slack : -11.403
+TNS   : -79.900
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'AVRuC_BETA_PORTC0'
+Slack : -6.009
+TNS   : -1546.285
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CHAOS_CLOCK'
+Slack : -4.655
+TNS   : -877.775
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'AVRuC_alpha_PORTB2'
+Slack : -3.000
+TNS   : -11.351
+
+Type  : Fast 1200mV 0C Model Recovery 'CHAOS_CLOCK'
+Slack : -12.899
+TNS   : -443.672
+
+Type  : Fast 1200mV 0C Model Recovery 'AVRuC_alpha_PORTB2'
+Slack : -12.680
+TNS   : -433.550
+
+Type  : Fast 1200mV 0C Model Recovery 'AVRuC_BETA_PORTC0'
+Slack : -11.915
+TNS   : -397.109
+
+Type  : Fast 1200mV 0C Model Removal 'AVRuC_BETA_PORTC0'
+Slack : -7.875
+TNS   : -171.790
+
+Type  : Fast 1200mV 0C Model Removal 'CHAOS_CLOCK'
+Slack : -6.483
+TNS   : -107.167
+
+Type  : Fast 1200mV 0C Model Removal 'AVRuC_alpha_PORTB2'
+Slack : -5.026
+TNS   : -39.840
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'AVRuC_BETA_PORTC0'
+Slack : -3.000
+TNS   : -803.542
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CHAOS_CLOCK'
+Slack : -3.000
+TNS   : -413.520
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'AVRuC_alpha_PORTB2'
+Slack : -3.000
+TNS   : -10.141
+
+------------------------------------------------------------

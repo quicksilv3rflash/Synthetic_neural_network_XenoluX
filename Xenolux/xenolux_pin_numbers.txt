@@ -1,0 +1,11 @@
+Xenolux is structured as follows
+ATMEGA32A alpha <--> Altera EP4CE6E22C8N <--> ATMEGA32A beta
+Pins between Altera EP4CE6E22C8N and ATMEGA32A alpha:
+X = tested/verified
+U = unverified
+FPGA pin             | ATMEGA32A alpha pin| AVR alpha PORTXX
+X75		|1			| PORTB0
+X76		|2			| PORTB1
+X77		|3			| PORTB2
+X83		|4			| PORTB3
+X100		|5			|PORTB4
